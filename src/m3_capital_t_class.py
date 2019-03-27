@@ -318,7 +318,7 @@ class CapitalT(object):
           :rtype: CapitalT
         """
         # ---------------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -330,7 +330,17 @@ class CapitalT(object):
         # IMPORTANT RESTRICTION: You are NOT permitted to add any instance
         # variables beyond  h_rect  and  v_rect, at any point of this exercise.
         #######################################################################
-        return self.v_rect, self.h_rect
+
+        intersection_center = self.h_rect.get_center()
+        width = (self.h_rect.corner_1.x - intersection_center.x) * 2
+        heigth = self.v_rect.corner_2.y - self.h_rect.corner_1.y
+        letter_thickness = self.h_rect.get_lower_left_corner().y - \
+                           self.h_rect.get_upper_right_corner().y
+        capitalT = CapitalT(intersection_center, width, heigth, letter_thickness)
+        capitalT.set_colors(self.h_rect.fill_color, self.h_rect.outline_color)
+
+        return capitalT
+
 
 
 # -----------------------------------------------------------------------------
